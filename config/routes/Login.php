@@ -7,10 +7,14 @@ class Login extends Views
 
     public function index()
     {
-        var_dump($_POST);
+        $data = [
+            'title' => 'Pembayaran Listrik Pascabayar'
+        ];
+        $this->view('login/index', $data);
     }
 
-    public function param()
+    public function auth()
     {
+        var_dump($_POST);
     }
 }

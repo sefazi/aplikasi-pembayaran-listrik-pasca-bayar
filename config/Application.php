@@ -66,7 +66,7 @@ class Application
     function definePath()
     {
         /**
-         * Configures aliases for Filter classes to
+         * Configures aliases for Paths classes to
          * make reading things nicer and simpler.
          *
          * @var obj

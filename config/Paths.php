@@ -6,10 +6,10 @@ class Paths
 {
     /**
      * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
+     * BASE URL
      * ---------------------------------------------------------------
      *
-     * This must contain the name of your "system" folder. Include
+     * This contain the name of your base url folder. Include
      * the path if the folder is not in the same directory as this file.
      *
      * @var string
@@ -17,21 +17,21 @@ class Paths
     public $baseurl = 'http://localhost/aplikasi-pembayaran-listrik-pasca-bayar/';
     /**
      * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
+     * REQUEST URL
      * ---------------------------------------------------------------
      *
-     * This must contain the name of your "system" folder. Include
-     * the path if the folder is not in the same directory as this file.
+     * This must contain the name of your request parameter. Used
+     * in the Server for make decision to choose correct file.
      *
      * @var string
      */
     public $requesturi = 'REQUEST_URI';
     /**
      * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
+     * CONFIG DIRECTORY
      * ---------------------------------------------------------------
      *
-     * This must contain the name of your "system" folder. Include
+     * This must contain the name of your Config folder. Include
      * the path if the folder is not in the same directory as this file.
      *
      * @var string
@@ -39,10 +39,10 @@ class Paths
     public $configDirectory = 'config/';
     /**
      * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
+     * ROUTES
      * ---------------------------------------------------------------
      *
-     * This must contain the name of your "system" folder. Include
+     * This must contain the name of your "routes" folder. Include
      * the path if the folder is not in the same directory as this file.
      *
      * @var string
@@ -50,10 +50,10 @@ class Paths
     public $routesDirectory = 'routes/';
     /**
      * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
+     * VIEWS DIRECTORY
      * ---------------------------------------------------------------
      *
-     * This must contain the name of your "system" folder. Include
+     * This must contain the name of your "views" folder. Include
      * the path if the folder is not in the same directory as this file.
      *
      * @var string
@@ -61,7 +61,7 @@ class Paths
     public $viewsDirectory = 'views/';
     /**
      * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
+     * CONNECTION DIRECTORY
      * ---------------------------------------------------------------
      *
      * This must contain the name of your "system" folder. Include
