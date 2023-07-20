@@ -24,11 +24,14 @@ class Views
 
         // Require the file
         if (is_file(JUMPUP . VIEWSPATH . $file . PHPEXT)) {
-            require_once JUMPUP . VIEWSPATH . $file . PHPEXT;
+            try {
+                require_once JUMPUP . VIEWSPATH . $file . PHPEXT;
+            } catch (\Throwable $th) {
+                die($th->getMessage());
+            }
+        } else {
+            $err = new \ErrorException('No such Directory at ' . VIEWSPATH . $file . PHPEXT);
+            die($err->getMessage());
         }
-    }
-
-    public function model()
-    {
     }
 }

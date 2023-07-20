@@ -1,0 +1,6 @@
+# config.yaml
+database:
+  host: localhost
+  db_name: aplikasi_pembayaran_listrik_pascabayar
+  username: root
+  password: 

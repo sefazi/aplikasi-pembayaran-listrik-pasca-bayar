@@ -21,5 +21,6 @@ class Load
         'ROUTES' => CONFPATH . 'Routes',
         'CONNECTION' => CONFPATH . CONNPATH . 'Connection',
         'VIEWS' => CONFPATH . ROUTESPATH . 'Views',
+        'COMPOSER' => 'vendor/autoload',
     ];
 }

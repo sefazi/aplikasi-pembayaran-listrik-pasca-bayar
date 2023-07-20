@@ -26,7 +26,7 @@
                 <p class="h2"><b><?= $title ?></b></p>
             </div>
             <div class="card-body">
-                <form action="<?= baseurl('/login') ?>" method="post">
+                <form action="<?= baseurl('/auth') ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="text" id="username" name="username" class="form-control" placeholder="Username" value="" autocomplete="off">
                         <div class="input-group-append">

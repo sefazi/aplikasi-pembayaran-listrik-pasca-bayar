@@ -54,7 +54,11 @@ class Application
 
         foreach ($route->route as $r) {
             if (implode($server->uri) == $r[0]) {
-                $server->requireRoute($r);
+                try {
+                    $server->requireRoute($r);
+                } catch (\Throwable $th) {
+                    die($th->getMessage());
+                }
             }
         }
     }
