@@ -2,12 +2,12 @@
 
 namespace Routes;
 
-class Pembayaran extends Views
+class Login extends Views
 {
 
     public function index()
     {
-        return $this->view('pembayaran/index');
+        var_dump($_POST);
     }
 
     public function param()

@@ -2,12 +2,14 @@
 
 namespace Routes;
 
-class Home extends BaseRoutes
+class Home extends Views
 {
 
     public function index()
     {
-        return $this->view('home/index');
+        // var_dump('sss');
+        $data = ['nasi goreng'];
+        $this->view('home/index', $data);
     }
 
     public function param()

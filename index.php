@@ -18,9 +18,12 @@ require CURRPATH . '/config/Paths.php';
 // Put the Paths in variable
 $paths = new Config\Paths;
 
-// Call the Application for running the program
-require CURRPATH . $paths->app;
+require CURRPATH . $paths->configDirectory . 'Application.php';
 
-// Initiate
+define("CONFPATH", $paths->configDirectory);
+
+// Check the current path are exist
+chdir(CONFPATH);
+
 $app = new Config\Application;
-$err = $app->run($paths);
+$app->run();

@@ -2,22 +2,57 @@
 
 namespace Config;
 
+use ErrorException;
 use Routes;
 
 class Server
 {
-    public $controller;
+    /**
+     * ---------------------------------------------------------------
+     * ROUTES CLASS 
+     * ---------------------------------------------------------------
+     *
+     * This must contain the name of your "system" folder. Include
+     * the path if the folder is not in the same directory as this file.
+     *
+     * @var string
+     */
+    public $endpoint;
+    /**
+     * ---------------------------------------------------------------
+     * ROUTES METHOD
+     * ---------------------------------------------------------------
+     *
+     * This must contain the name of your "system" folder. Include
+     * the path if the folder is not in the same directory as this file.
+     *
+     * @var string
+     */
     public $method;
-    public $param;
+    /**
+     * ---------------------------------------------------------------
+     * ROUTES PARAM
+     * ---------------------------------------------------------------
+     *
+     * This must contain the name of your "system" folder. Include
+     * the path if the folder is not in the same directory as this file.
+     *
+     * @var array
+     */
+    public $param = [];
+    /**
+     * ---------------------------------------------------------------
+     * URI
+     * ---------------------------------------------------------------
+     *
+     * This must contain the name of your "system" folder. Include
+     * the path if the folder is not in the same directory as this file.
+     *
+     * @var string
+     */
     public $uri;
 
-    public function __construct()
-    {
-        $this->uri = $this->Parsing(URI);
-    }
-
-
-    function Parsing($arg)
+    function __construct($arg)
     {
         $uri = rtrim($_SERVER[$arg], '/');
         $uri = filter_var($uri, FILTER_SANITIZE_URL);
@@ -33,46 +68,51 @@ class Server
             $uri[2] = SEPARATOR;
         }
 
-        return $uri;
-    }
+        /**
+         * Reset index
+         * @var array
+         */
+        $uri = array_values($uri);
 
-    public function SetController($arg)
-    {
-        $this->controller = $arg;
-        $this->method = 'index';
-    }
-
-    public function get($file, $arg)
-    {
-        if (SEPARATOR . $this->uri[2] == $file) {
-            /**
-             * Initialize the second parameter
-             * this funtion fill the public var
-             * with Class and method
-             */
-            $this->initialize($arg);
-
-
-            if (is_file(CONFIGPATH . ROUTESPATH . ucfirst($this->controller) . '.php')) {
-                require_once CONFIGPATH . ROUTESPATH . ucfirst($this->controller) . '.php';
-                $app = 'Routes\\' . $this->controller;
-                $this->controller = new $app;
-                call_user_func_array([$this->controller, $this->method], []);
-            }
+        /**
+         * replace each key
+         * add separator on it
+         */
+        for ($i = 0; $i < count($uri); $i++) {
+            $uri[$i] = '/' . $uri[$i];
         }
-        // else if ($this->uri[2] == SEPARATOR) {
-        //     require_once CONFIGPATH . ROUTESPATH . ucfirst($this->controller) . '.php';
-        //     $app = 'Routes\\' . $this->controller;
-        //     $this->controller = new $app;
-        //     call_user_func_array([$this->controller, $this->method], []);
-        // }
+
+        $this->uri = $uri;
     }
 
-    function initialize($arg)
+    public function setDefaultEndpoint($arg = '')
     {
-        $param = explode(':', $arg);
+        $this->endpoint = $arg;
+    }
 
-        $this->controller = $param[0];
-        $this->method = $param[1];
+    public function setDefaultMethod($arg = '')
+    {
+        $this->method = $arg;
+    }
+
+    public function setParam($arr = [])
+    {
+        $this->param = $arr;
+    }
+
+    public function requireRoute($arg)
+    {
+        $routes = explode(':', $arg[1]);
+        $this->setDefaultEndpoint($routes[0]);
+        $this->setDefaultMethod($routes[1]);
+
+        if (is_file(ROUTESPATH . ucfirst($this->endpoint) . PHPEXT)) {
+            require_once ROUTESPATH . ucfirst($this->endpoint) . PHPEXT;
+            $app = 'Routes\\' . $this->endpoint;
+            $this->endpoint = new $app;
+            call_user_func_array([$this->endpoint, $this->method], $this->param);
+        } else {
+            throw new ErrorException("No Routes Found");
+        }
     }
 }

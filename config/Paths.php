@@ -25,7 +25,7 @@ class Paths
      *
      * @var string
      */
-    public $app = '/config/Application.php';
+    public $requesturi = 'REQUEST_URI';
     /**
      * ---------------------------------------------------------------
      * SYSTEM FOLDER NAME
@@ -47,7 +47,7 @@ class Paths
      *
      * @var string
      */
-    public $baseconfig = 'BaseConfig.php';
+    public $routesDirectory = 'routes/';
     /**
      * ---------------------------------------------------------------
      * SYSTEM FOLDER NAME
@@ -58,7 +58,7 @@ class Paths
      *
      * @var string
      */
-    public $requesturi = 'REQUEST_URI';
+    public $viewsDirectory = 'views/';
     /**
      * ---------------------------------------------------------------
      * SYSTEM FOLDER NAME
@@ -69,49 +69,5 @@ class Paths
      *
      * @var string
      */
-    public $routes = 'routes/';
-    /**
-     * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
-     * ---------------------------------------------------------------
-     *
-     * This must contain the name of your "system" folder. Include
-     * the path if the folder is not in the same directory as this file.
-     *
-     * @var string
-     */
-    public $views = 'views/';
-    /**
-     * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
-     * ---------------------------------------------------------------
-     *
-     * This must contain the name of your "system" folder. Include
-     * the path if the folder is not in the same directory as this file.
-     *
-     * @var string
-     */
-    public $connection = 'connection/';
-    /**
-     * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
-     * ---------------------------------------------------------------
-     *
-     * This must contain the name of your "system" folder. Include
-     * the path if the folder is not in the same directory as this file.
-     *
-     * @var string
-     */
-    public $server = 'Server.php';
-    /**
-     * ---------------------------------------------------------------
-     * SYSTEM FOLDER NAME
-     * ---------------------------------------------------------------
-     *
-     * This must contain the name of your "system" folder. Include
-     * the path if the folder is not in the same directory as this file.
-     *
-     * @var string
-     */
-    public $baseroutes = 'BaseRoutes.php';
+    public $connectionDirectory = 'connection/';
 }
