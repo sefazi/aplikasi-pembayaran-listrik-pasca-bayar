@@ -28,51 +28,40 @@
                 <p class="h2"><b><?= $title ?></b></p>
             </div>
             <div class="card-body">
-                <!-- <?php //if (getFlash('wrong-pass') != null) : 
-                        ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <span style="color:cornsilk"><? //= //getFlash('wrong-pass'); 
-                                                        ?></span>
-                        <button type="button" class="close" data-dismiss="alert">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php //endif; 
-                ?> -->
                 <form action="<?= baseurl('/auth') ?>" method="post">
+                    <input type="hidden" name="daftar">
                     <div class="input-group mb-3">
                         <input type="text" id="username" name="username" class="form-control <?= (hasFlashError('user-has')) ? 'is-invalid' : ''; ?>" placeholder="Username" value="<?= old('username') ?>" autocomplete="off" autofocus>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
-                        </div>
                         <div class="invalid-feedback">
-                            <?= getFlash('no-user'); ?>
+                            <?= getFlash('registered'); ?>
                         </div>
+                    </div>
+                    <?php $pass = old('password') ?>
+                    <div class="input-group mb-3">
+                        <input type="text" id="password" name="password" class="form-control" placeholder="Password" value="<?= $pass ?>">
+                    </div>
+                    <!-- <div class="input-group mb-3">
+                        <input type="text" id="no_kwh" name="no_kwh" class="form-control" placeholder="Nomor KWH" value="" disabled>
+                    </div> -->
+                    <div class="input-group mb-3">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Nama Lengkap" value="<?= old('name') ?>">
                     </div>
                     <div class="input-group mb-3">
-                        <?php $pass = old('password') ?>
-                        <input type="password" id="password" name="password" class="form-control <?= (hasFlashError('pass-has')) ? 'is-invalid' : ''; ?>" placeholder="Password" value="<?= $pass ?>">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                        <div class="invalid-feedback">
-                            <?= getFlash('wrong-pass'); ?>
-                        </div>
+                        <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat" value="<?= old('alamat') ?>">
                     </div>
+                    <!-- <div class="input-group mb-3">
+                        <input type="text" id="id_tarif" name="id_tarif" class="form-control" placeholder="ID Tarif" value="" disabled>
+                    </div> -->
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-4 mb-2">
-                            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
                 <p class="mt-2 mb-0">
-                    <a href="<?= baseurl('/sign-in') ?>">Sign In</a>
+                    <a href="<?= baseurl('/login') ?>">Log In</a>
                 </p>
             </div>
             <!-- /.card-body -->
@@ -92,6 +81,10 @@
     <!-- Toastr -->
     <script src="<?= baseurl() ?>assets/plugins/toastr/toastr.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            err = $('username').val()
+            // location.reload();
+        });
     </script>
 </body>
 

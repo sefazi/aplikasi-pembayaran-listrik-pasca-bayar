@@ -18,6 +18,8 @@ class Routes
         ['/pembayaran', 'Pembayaran:index'],
         ['/login', 'Login:index'],
         ['/logout', 'Login:logout'],
+        ['/sign-in', 'Login:signIn'],
         ['/auth', 'Login:auth'],
+        ['/error', 'ErrorRedirect:init'],
     ];
 }
