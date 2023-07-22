@@ -19,7 +19,6 @@ class Views
     {
         // Throw data array
         $this->param = $data;
-        $this->endSection();
 
         // Make a variable each index of array
         extract($data, EXTR_SKIP);
