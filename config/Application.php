@@ -17,7 +17,7 @@ class Application
      * their location on the file system. These are used by the autoloader
      * to locate files the first time they have been instantiated.
      *
-     * @var
+     * @param
      */
     public function run()
     {
@@ -52,14 +52,35 @@ class Application
         $server->setDefaultEndpoint('Home');
         $server->setDefaultMethod('index');
 
+        // Flag variable to track if the condition is met
+        $found = false;
+
         foreach ($route->route as $r) {
+            // Check if the target key matches
             if (implode($server->uri) == $r[0]) {
-                try {
-                    $server->requireRoute($r);
-                } catch (\Throwable $th) {
-                    die($th->getMessage());
-                }
+                // Set the flag to true
+                $found = true;
+                // Perform require
+                $server->requireRoute($r);
             }
+        }
+
+        // If the loop ends without found directory, check the flag
+        if (!$found) {
+            // Change it for get more error exception
+
+            /**
+             * Important message for error page
+             * the strcuture must contain
+             * title, headline, header and message
+             */
+            $data = [
+                'title' => '404 Page not found',
+                'headline' => '404',
+                'header' => 'Oops! Page not found',
+                'message' => 'We could not find the page you were looking for.'
+            ];
+            error_redirect($data);
         }
     }
 

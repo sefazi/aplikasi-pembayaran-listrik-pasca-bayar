@@ -145,9 +145,6 @@ class Server
 
             // callback
             call_user_func_array([$this->endpoint, $this->method], $this->param);
-        } else {
-            // Change it for get more error exception
-            throw new ErrorException("No Routes Found");
         }
     }
 }

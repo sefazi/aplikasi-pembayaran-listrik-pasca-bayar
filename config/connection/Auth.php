@@ -11,12 +11,19 @@ class Auth extends Connection
     public function __construct()
     {
         $this->db = new Connection;
-        $this->db->connect();
+        $err = $this->db->connect();
+        if ($err != null) {
+            return $err;
+        }
     }
 
-    public function GetIDPelanggan()
+    public function GetIDPelanggan($username)
     {
-        $this->db->Raw('SELECT * FROM user');
-        return $this->db->resultSet();
+        $data = [$username];
+        return $this->db->Raw("SELECT * FROM user WHERE username = ?", $data)->First();
+    }
+
+    public function FunctionName()
+    {
     }
 }

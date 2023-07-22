@@ -7,8 +7,18 @@ class Home extends Views
 
     public function index()
     {
-        $data = ['nasi goreng'];
-        $this->view('home/index', $data);
+        $login = getSession('is-login');
+
+        // Check session
+        if ($login) {
+            $data = [
+                'title' => 'Menu Pelanggan - Pembayaran Listrik Pascabayar',
+                'render' => 'home'
+            ];
+            $this->view('home/index', $data);
+        } else {
+            redirecting('/login');
+        }
     }
 
     public function param()

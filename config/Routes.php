@@ -17,6 +17,7 @@ class Routes
         ['/home', 'Home:index'],
         ['/pembayaran', 'Pembayaran:index'],
         ['/login', 'Login:index'],
+        ['/logout', 'Login:logout'],
         ['/auth', 'Login:auth'],
     ];
 }
