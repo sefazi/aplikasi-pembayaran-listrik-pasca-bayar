@@ -31,8 +31,15 @@ class Connection
 
             // Set atribute
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return null;
         } catch (\PDOException $e) {
-            die($e->getMessage());
+            $data = [
+                'title' => 'Error Ocurred',
+                'headline' => '500',
+                'header' => 'Oops! You hit snag',
+                'message' => $e->getMessage()
+            ];
+            error_redirect($data);
         }
     }
 
@@ -48,15 +55,33 @@ class Connection
         $this->password = $config['database']['password'];
     }
 
-    public function Raw($query)
+    /**
+     * ----------------------------------------
+     * Query SQL with Raw statement
+     * ----------------------------------------
+     * this function receive query and parameter,
+     * for example 'SELECT * FROM users'
+     *
+     * @param string|array 
+     */
+    public function Raw($query, $param = [])
     {
-        // clear statement
+        // Clear space from query
         $query = rtrim($query);
 
+        // Preparing statement
         $this->stmt = $this->dbh->prepare($query);
+
+        // Bind Param 
+        $index = 1;
+        foreach ($param as $value) {
+            $this->bind($index, $value);
+            $index++;
+        }
+        return $this;
     }
 
-    public function bind($param, $value, $type = null)
+    private function bind($param, $value, $type = null)
     {
         if (is_null($type)) {
             switch (true) {
@@ -78,21 +103,67 @@ class Connection
         $this->stmt->bindValue($param, $value, $type);
     }
 
-    public function execute()
+    public function Exec()
     {
-        $this->stmt->execute();
+        try {
+            $this->stmt->execute();
+        } catch (\PDOException $e) {
+            $data = [
+                'title' => 'Error Ocurred',
+                'headline' => '500',
+                'header' => 'Oops! You hit snag',
+                'message' => $e->getMessage()
+            ];
+            error_redirect($data);
+        }
     }
 
-    public function resultSet()
+    public function getRessult()
     {
-        $this->stmt->execute();
+        try {
+            $this->stmt->execute();
+        } catch (\PDOException $e) {
+            $data = [
+                'title' => 'Error Ocurred',
+                'headline' => '500',
+                'header' => 'Oops! You hit snag',
+                'message' => $e->getMessage()
+            ];
+            error_redirect($data);
+        }
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getRessultArray()
+    {
+        try {
+            $this->stmt->execute();
+        } catch (\PDOException $e) {
+            $data = [
+                'title' => 'Error Ocurred',
+                'headline' => '500',
+                'header' => 'Oops! You hit snag',
+                'message' => $e->getMessage()
+            ];
+            error_redirect($data);
+        }
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function single()
+    public function First()
     {
-        $this->stmt->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        try {
+            $this->stmt->execute();
+        } catch (\PDOException $e) {
+            $data = [
+                'title' => 'Error Ocurred',
+                'headline' => '500',
+                'header' => 'Oops! You hit snag',
+                'message' => $e->getMessage()
+            ];
+            error_redirect($data);
+        }
+        return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
     public function rowCount()
