@@ -19,6 +19,14 @@ class Application
      *
      * @param
      */
+
+    function getServer() {
+        echo $_SERVER['REQUEST_URI'];    }
+
+        public $new = function() {
+            
+        };
+
     public function run()
     {
         // ini_set('error_reporting', E_ALL);
