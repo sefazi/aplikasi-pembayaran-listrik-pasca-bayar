@@ -13,7 +13,8 @@ class Home extends Views
         if ($login) {
             $data = [
                 'title' => 'Menu Pelanggan - Pembayaran Listrik Pascabayar',
-                'render' => 'home'
+                'render' => 'home',
+                'nama_user' => 'Rismawati'
             ];
             $this->view('home/index', $data);
         } else {

@@ -41,7 +41,7 @@
                 ?> -->
                 <form action="<?= baseurl('/auth') ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" id="username" name="username" class="form-control <?= (hasFlashError('user-has')) ? 'is-invalid' : ''; ?>" placeholder="Username" value="<?= old('username') ?>" autocomplete="off">
+                        <input type="text" id="username" name="username" class="form-control <?= (hasFlashError('user-has')) ? 'is-invalid' : ''; ?>" placeholder="Username" value="<?= old('username') ?>" autocomplete="off" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>

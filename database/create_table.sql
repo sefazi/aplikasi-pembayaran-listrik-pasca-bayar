@@ -1,0 +1,1 @@
+CREATE Database aplikasi_pembayaran_listrik_pascabayar;
