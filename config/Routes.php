@@ -18,9 +18,11 @@ class Routes
         ['/pembayaran', 'Pembayaran:index'],
         ['/login', 'Login:index'],
         ['/logout', 'Login:logout'],
+        ['/sign-in', 'Login:signIn'],
         ['/auth', 'Login:auth'],
         ['/penggunaan', 'penggunaan:index'],
         ['/pelanggan', 'pelanggan:index'],
         
+        ['/error', 'ErrorRedirect:init'],
     ];
 }

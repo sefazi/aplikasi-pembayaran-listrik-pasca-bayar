@@ -14,6 +14,7 @@ class Connection
 
     private $dbh;
     private $stmt;
+    private $table;
 
     public function connect()
     {
@@ -103,6 +104,83 @@ class Connection
         $this->stmt->bindValue($param, $value, $type);
     }
 
+    /**
+     * ----------------------------------------
+     * Query SQL Insert statement
+     * ----------------------------------------
+     * this function receive query and parameter,
+     * INSERT INTO `users` (colum_name) VALUES (values)
+     * 
+     * Mandatory
+     * $data = [
+     *      'column_name' => 'value',
+     *  ];
+     *
+     * @param string 
+     */
+    public function Insert(string $table, $data)
+    {
+        $this->setTable($table);
+
+        $length = 0;
+        if (is_object($data)) {
+            // Get an array of the object's properties
+            $properties = get_object_vars($data);
+
+            // Count the number of properties
+            $length = count($properties);
+        } else {
+            $length = count($data);
+        }
+
+        // Set the Columns and Values
+        $columnSet = "";
+        $valueSet = "";
+        foreach ($data as $key => $value) {
+            if ($length <= 1) {
+                $columnSet = $columnSet . $key;
+                $valueSet = $valueSet . '?';
+            } else {
+                $columnSet = $columnSet . $key . ',';
+                $valueSet = $valueSet . '?' . ',';
+            }
+            $length--;
+        }
+
+        // Prepare the query
+        $sql = "INSERT INTO " . $this->table . " (" . $columnSet . ") " . "VALUES(" . $valueSet . ")";
+
+        $this->stmt = $this->dbh->prepare($sql);
+
+        // Bind Parameter
+        $index = 1;
+        foreach ($data as $key => $value) {
+            $this->bind($index, $value);
+            $index++;
+        }
+
+        return $this;
+    }
+
+    public function setTable($tableName)
+    {
+        $this->table = $tableName;
+        return $this;
+    }
+
+    public function GetColumnName()
+    {
+        $this->stmt  = $this->dbh->prepare('SELECT * FROM ' . $this->table);
+        $column = $this->First();
+        $columnName = [];
+        $i = 0;
+        foreach ($column as $key => $value) {
+            $columnName[$i] = $key;
+        }
+
+        return $columnName;
+    }
+
     public function Exec()
     {
         try {
@@ -116,6 +194,8 @@ class Connection
             ];
             error_redirect($data);
         }
+
+        return $this;
     }
 
     public function getRessult()
@@ -168,6 +248,16 @@ class Connection
 
     public function rowCount()
     {
-        return $this->stmt->rowCount();
+        try {
+            return $this->stmt->rowCount();
+        } catch (\PDOException $e) {
+            $data = [
+                'title' => 'Error Ocurred',
+                'headline' => '0',
+                'header' => 'Error Database',
+                'message' => $e->getMessage()
+            ];
+            error_redirect($data);
+        }
     }
 }

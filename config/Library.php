@@ -61,6 +61,7 @@ if (!function_exists('redirecting')) {
             }
             // Redirecting
             header("Location: " . BASEURL . $url);
+            // exit();
         } catch (\Throwable $e) {
             $data = [
                 'title' => 'Error Ocurred',
@@ -119,6 +120,7 @@ if (!function_exists('error_redirect')) {
 
         // Redirect to your custom 404.php file
         require_once JUMPUP . VIEWSPATH . 'error' . PHPEXT;
+        exit();
         die();
     }
 }
