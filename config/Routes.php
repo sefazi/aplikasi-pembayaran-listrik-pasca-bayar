@@ -19,5 +19,8 @@ class Routes
         ['/login', 'Login:index'],
         ['/logout', 'Login:logout'],
         ['/auth', 'Login:auth'],
+        ['/penggunaan', 'penggunaan:index'],
+        ['/pelanggan', 'pelanggan:index'],
+        
     ];
 }
