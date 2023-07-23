@@ -10,8 +10,8 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="mainMenu">
                 <a class="dropdown-item" href="<?= baseurl('/tarif') ?>">Pembayaran - Tarif</a>
-                <a class="dropdown-item" href="<?= baseurl('/penggunaan') ?>">Penggunaan - Pengguna</a>
                 <a class="dropdown-item" href="<?= baseurl('/pelanggan') ?>">Pelanggan</a>
+                <a class="dropdown-item" href="<?= baseurl('/penggunaan') ?>">Penggunaan - Pengguna</a>
                 <a class="dropdown-item" href="<?= baseurl('/tagihan') ?>">Pembayaran - Tagihan</a>
             </div>
         </li>

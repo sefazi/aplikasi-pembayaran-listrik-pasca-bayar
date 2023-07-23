@@ -68,7 +68,7 @@
             <h3 class="card-title">Data Pelanggan</h3>
           </div>
           <!-- /.card-header -->
-          <div class="card-body table-responsive p-0">
+          <div class="card-body table-responsive">
             <table id="pelanggan" class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -109,8 +109,6 @@
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 <input type="hidden" id="baseurl" value="<?= baseurl('/get_data_pelanggan') ?>">
 <!-- Toastr -->
