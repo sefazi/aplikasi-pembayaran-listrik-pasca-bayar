@@ -23,6 +23,7 @@ class Routes
         ['/penggunaan', 'penggunaan:index'],
         ['/pelanggan', 'pelanggan:index'],
         ['/tagihan', 'tagihan:index'],
+        ['/invoice', 'invoice:index'],
 
         ['/error', 'ErrorRedirect:init'],
     ];
