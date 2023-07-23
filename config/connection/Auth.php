@@ -51,7 +51,7 @@ class Auth extends Connection
             'id_pelanggan' => date('YHmids'),
             'username' => $data->username,
             'password' => $data->password,
-            'nomor_kwh' => '',
+            'nomor_kwh' => '0',
             'nama_pelanggan' => $data->name,
             'alamat' => $data->alamat,
             'id_tarif' => ''
