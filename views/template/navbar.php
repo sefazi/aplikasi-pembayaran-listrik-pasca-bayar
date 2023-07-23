@@ -9,11 +9,12 @@
                 Main Menu
             </a>
             <div class="dropdown-menu" aria-labelledby="mainMenu">
-                <a class="dropdown-item" href="#">Pengelolaan</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="<?= baseurl('/tarif')?>">Pembayaran - Tarif</a>
+                <a class="dropdown-item" href="<?= baseurl('/penggunaan')?>">Penggunaan - Pengguna</a>
+                <a class="dropdown-item" href="<?= baseurl('/pelanggan')?>">Pelanggan</a>
             </div>
         </li>
-        <li class="nav-item dropdown d-none d-sm-inline-block">
+        <!-- <li class="nav-item dropdown d-none d-sm-inline-block">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
             </a>
@@ -23,7 +24,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
-        </li>
+        </li> -->
     </ul>
     <!-- Left navbar links -->
     <!-- <ul class="navbar-nav">
