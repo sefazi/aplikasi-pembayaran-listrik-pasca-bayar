@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="<?= baseurl('/assets') ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="<?= baseurl() ?>/assets/plugins/toastr/toastr.min.css">
+    <!-- jQuery -->
+    <script src="<?= baseurl('/assets') ?>/plugins/jquery/jquery.min.js"></script>
 </head>
 
 <body class="pace-primary sidebar-collapse">
@@ -28,8 +30,6 @@
     <?php $this->renderSection($render) ?>
 
 
-    <!-- jQuery -->
-    <script src="<?= baseurl('/assets') ?>/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= baseurl('/assets') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- pace-progress -->
@@ -54,24 +54,23 @@
     <script src="<?= baseurl() ?>/assets/plugins/toastr/toastr.min.js"></script>
 
     <script>
-  $(function () {
-    $("#pelanggan").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#pelanggan .col-md-6:eq(0)');
-    // $('#pelanggan').DataTable({
-    //   "paging": true,
-    //   "lengthChange": false,
-    //   "searching": false,
-    //   "ordering": true,
-    //   "info": true,
-    //   "autoWidth": false,
-    //   "responsive": true,
-    // });
-  });
-  </script>
-
-  
+        $(function() {
+            $("#pelanggan").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#pelanggan .col-md-6:eq(0)');
+        });
+        $(function() {
+            $("#tarif").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#tarif_wrapper .col-md-6:eq(0)');
+        });
+    </script>
 </body>
 
 </html>

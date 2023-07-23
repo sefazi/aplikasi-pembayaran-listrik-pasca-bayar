@@ -24,6 +24,11 @@ class Tarif extends Connection
         return $this->db->Raw("SELECT * FROM tarif WHERE daya = ?", $data)->First();
     }
 
+    public function GetDayaAll()
+    {
+        return $this->db->Raw("SELECT * FROM tarif")->getRessult();
+    }
+
     public function InsertTarif($data)
     {
         $value = [
@@ -31,5 +36,15 @@ class Tarif extends Connection
             'tarifperkwh' => $data->tarif
         ];
         return $this->db->Insert('tarif', $value)->Exec()->rowCount();
+    }
+
+    public function Edittarif($data)
+    {
+        $value = [
+            $data->daya,
+            $data->tarif,
+            (int)$data->id,
+        ];
+        return $this->db->Raw('UPDATE tarif SET daya = ? , tarifperkwh = ? WHERE id_tarif = ? ', $value)->Exec()->rowCount();
     }
 }
