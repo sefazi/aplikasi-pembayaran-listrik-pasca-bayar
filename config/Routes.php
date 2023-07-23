@@ -21,10 +21,13 @@ class Routes
                 ['/sign-in', 'Login:signIn'],
                 ['/auth', 'Login:auth'],
                 ['/penggunaan', 'penggunaan:index'],
+                ['/penggunaan_input', 'penggunaan:inputPenggunaan'],
                 ['/pelanggan', 'pelanggan:index'],
                 ['/pelanggan_input', 'pelanggan:input'],
                 ['/tagihan', 'tagihan:index'],
+                ['/bayar_tagihan', 'tagihan:bayar'],
                 ['/invoice', 'invoice:index'],
+                ['/profile', 'profile:index'],
                 ['/get_data_pelanggan', 'Pelanggan:ajax'],
 
                 ['/error', 'ErrorRedirect:init'],

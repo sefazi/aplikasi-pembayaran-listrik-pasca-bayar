@@ -96,7 +96,7 @@ CREATE TABLE `penggunaan` (
 --
 
 CREATE TABLE `tagihan` (
-  `id_tagihan` int(20) NOT NULL,
+  `id_tagihan` int(11) AUTO_INCREMENT PRIMARY KEY,
   `id_penggunaan` varchar(50) NOT NULL,
   `id_pelanggan` varchar(20) NOT NULL,
   `bulan` varchar(10) NOT NULL,

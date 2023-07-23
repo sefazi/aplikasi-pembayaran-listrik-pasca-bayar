@@ -3,17 +3,26 @@
     <ul class="navbar-nav">
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?= baseurl('/home') ?>" class="nav-link">Home</a>
+
         </li>
-        <li class="nav-item dropdown d-none d-sm-inline-block">
-            <a class="nav-link dropdown-toggle" href="#" id="mainMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Main Menu
-            </a>
-            <div class="dropdown-menu" aria-labelledby="mainMenu">
-                <a class="dropdown-item" href="<?= baseurl('/tarif') ?>">Pembayaran - Tarif</a>
-                <a class="dropdown-item" href="<?= baseurl('/penggunaan') ?>">Penggunaan - Pengguna</a>
-                <a class="dropdown-item" href="<?= baseurl('/pelanggan') ?>">Pelanggan</a>
-                <a class="dropdown-item" href="<?= baseurl('/tagihan') ?>">Pembayaran - Tagihan</a>
-            </div>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= baseurl('/penggunaan') ?>" class="nav-link">Penggunaan </a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= baseurl('/pelanggan') ?>" class="nav-link">Pelanggan </a>
+        </li>
+
+
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= baseurl('/tarif') ?>" class="nav-link">Tarif Daya </a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= baseurl('/tagihan') ?>" class="nav-link">Tagihan </a>
+        </li>
+        </div>
         </li>
         <!-- <li class="nav-item dropdown d-none d-sm-inline-block">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

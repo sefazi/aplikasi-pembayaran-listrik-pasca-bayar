@@ -48,14 +48,4 @@ class Pelanggan extends Connection
         ];
         return $this->db->Raw("UPDATE pelanggan SET  nomor_kwh = ?, alamat = ?, id_tarif = ? WHERE id_pelanggan = ?", $value)->Exec()->rowCount();
     }
-
-    // public function Edittarif($data)
-    // {
-    //     $value = [
-    //         $data->daya,
-    //         $data->tarif,
-    //         (int)$data->id,
-    //     ];
-    //     return $this->db->Raw('UPDATE tarif SET daya = ? , tarifperkwh = ? WHERE id_tarif = ? ', $value)->Exec()->rowCount();
-    // }
 }

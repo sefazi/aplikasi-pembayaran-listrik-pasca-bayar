@@ -56,19 +56,27 @@
     <script>
         $(function() {
             $("#pelanggan").DataTable({
-                "responsive": true,
+                "responsive": false,
                 "lengthChange": false,
                 "autoWidth": false,
                 "buttons": ["copy", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#pelanggan .col-md-6:eq(0)');
+            }).buttons().container().appendTo('#pelanggan_wrapper .col-md-6:eq(0)');
         });
         $(function() {
             $("#tarif").DataTable({
-                "responsive": true,
+                "responsive": false,
                 "lengthChange": false,
                 "autoWidth": false,
                 "buttons": ["copy", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#tarif_wrapper .col-md-6:eq(0)');
+        });
+        $(function() {
+            $("#penggunaan").DataTable({
+                "responsive": false,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#penggunaan_wrapper .col-md-6:eq(0)');
         });
     </script>
 </body>
