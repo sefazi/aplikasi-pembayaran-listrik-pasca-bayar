@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="<?= baseurl('/assets') ?>/plugins/pace-progress/themes/black/pace-theme-flat-top.css">
     <!-- adminlte-->
     <link rel="stylesheet" href="<?= baseurl('/assets') ?>/dist/css/adminlte.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= baseurl('/assets') ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= baseurl('/assets') ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= baseurl('/assets') ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="<?= baseurl() ?>/assets/plugins/toastr/toastr.min.css">
+    <!-- jQuery -->
+    <script src="<?= baseurl('/assets') ?>/plugins/jquery/jquery.min.js"></script>
 </head>
 
 <body class="pace-primary sidebar-collapse">
@@ -22,14 +30,47 @@
     <?php $this->renderSection($render) ?>
 
 
-    <!-- jQuery -->
-    <script src="<?= baseurl('/assets') ?>/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= baseurl('/assets') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- pace-progress -->
     <script src="<?= baseurl('/assets') ?>/plugins/pace-progress/pace.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= baseurl('/assets') ?>/dist/js/adminlte.min.js"></script>
+
+    <!-- DataTables  & Plugins -->
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/jszip/jszip.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="<?= baseurl('/assets') ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- Toastr -->
+    <script src="<?= baseurl() ?>/assets/plugins/toastr/toastr.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#pelanggan").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#pelanggan .col-md-6:eq(0)');
+        });
+        $(function() {
+            $("#tarif").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#tarif_wrapper .col-md-6:eq(0)');
+        });
+    </script>
 </body>
 
 </html>
