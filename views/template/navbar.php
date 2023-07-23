@@ -3,26 +3,26 @@
     <ul class="navbar-nav">
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?= baseurl('/home') ?>" class="nav-link">Home</a>
-            
+
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= baseurl('/penggunaan') ?>" class="nav-link">Penggunaan </a>
+            <a href="<?= baseurl('/penggunaan') ?>" class="nav-link">Penggunaan </a>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= baseurl('/pelanggan') ?>" class="nav-link">Pelanggan </a>
+            <a href="<?= baseurl('/pelanggan') ?>" class="nav-link">Pelanggan </a>
         </li>
 
-        
-       
+
+
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= baseurl('/tarif') ?>" class="nav-link">Tarif Daya </a>
+            <a href="<?= baseurl('/tarif') ?>" class="nav-link">Tarif Daya </a>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= baseurl('/tagihan') ?>" class="nav-link">Tagihan </a>
+            <a href="<?= baseurl('/tagihan') ?>" class="nav-link">Tagihan </a>
         </li>
-            </div>
+        </div>
         </li>
         <!-- <li class="nav-item dropdown d-none d-sm-inline-block">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
