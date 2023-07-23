@@ -57,11 +57,11 @@ class Login extends Views
                 setFlash('registered', 'User sudah terdaftar');
                 setFlashError('user-has');
                 redirecting('/sign-in');
-            }
-
-            $res = $this->database->InsertUser($req);
-            if ($res > 0) {
-                redirecting('/home');
+            } else {
+                $resInsert = $this->database->InsertUser($req);
+                if ($resInsert > 0) {
+                    redirecting('/home');
+                }
             }
         } else {
             $res = $this->database->GetID($req->username);
