@@ -14,7 +14,7 @@ class Paths
      *
      * @var string
      */
-    public $baseurl = 'http://192.168.148.37/aplikasi-pembayaran-listrik-pasca-bayar/';
+    public $baseurl = 'http://localhost:8080/aplikasi-pembayaran-listrik-pasca-bayar/';
     /**
      * ---------------------------------------------------------------
      * REQUEST URL

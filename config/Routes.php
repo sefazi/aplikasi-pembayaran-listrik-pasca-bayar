@@ -15,14 +15,14 @@ class Routes
      */
     public $route = [
         ['/home', 'Home:index'],
-        ['/pembayaran', 'Pembayaran:index'],
+        ['/tarif', 'Tarif:index'],
         ['/login', 'Login:index'],
         ['/logout', 'Login:logout'],
         ['/sign-in', 'Login:signIn'],
         ['/auth', 'Login:auth'],
         ['/penggunaan', 'penggunaan:index'],
         ['/pelanggan', 'pelanggan:index'],
-        
+
         ['/error', 'ErrorRedirect:init'],
     ];
 }

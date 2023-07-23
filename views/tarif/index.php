@@ -1,5 +1,5 @@
 <?php $this->extend('template/page'); ?>
-<?php $this->section('pembayaran'); ?>
+<?php $this->section('tarif'); ?>
 <div class="content">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -30,7 +30,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?= baseurl('/pembayaran') ?>" method="post">
+                        <form action="<?= baseurl('/tarif') ?>" method="post">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="daya">Masukkan Daya</label>
@@ -43,8 +43,8 @@
                                     </datalist>
                                 </div>
                                 <div class="form-group">
-									<label>TARIF/KWH</label>
-									<input type="text" name="tarif" class="form-control" placeholder="Masukkan Tarif" required value="">
+                                    <label>TARIF/KWH</label>
+                                    <input type="text" name="tarif" class="form-control" placeholder="Masukkan Tarif" required value="">
                                 </div>
                                 <button type="submit" class="btn btn-block btn-outline-primary">Submit</button>
                                 <button type="reset" class="btn btn-block btn-outline-primary">Reset</button>
@@ -59,15 +59,15 @@
                             <h3 class="card-title">Daftar Tarif</h3>
 
                             <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                                <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -86,13 +86,15 @@
                                         <td>1</td>
                                         <td>123</td>
                                         <td>10000</td>
-                                        <td><a href="<?= baseurl('/pembayaran') ?>" class="btn btn-sm">
+                                        <td><a href="<?= baseurl('/tarif') ?>" class="btn btn-sm">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php //foreach($data as $key => $val): ?>
-                                    <?php //endforeach ?>
+                                    <?php //foreach($data as $key => $val): 
+                                    ?>
+                                    <?php //endforeach 
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -104,4 +106,10 @@
     </div>
     <!-- /.content -->
 </div>
+
+<?php if (hasFlashError('daya-has')) : ?>
+    <script>
+        toastr.info('<?= getFlash('exist'); ?>')
+    </script>
+<?php endif; ?>
 <?php $this->endSection(); ?>
