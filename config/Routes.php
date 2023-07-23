@@ -22,7 +22,9 @@ class Routes
         ['/auth', 'Login:auth'],
         ['/penggunaan', 'penggunaan:index'],
         ['/pelanggan', 'pelanggan:index'],
+        ['/pelanggan_input', 'pelanggan:input'],
         ['/tagihan', 'tagihan:index'],
+        ['/get_data_pelanggan', 'Pelanggan:ajax'],
 
         ['/error', 'ErrorRedirect:init'],
     ];

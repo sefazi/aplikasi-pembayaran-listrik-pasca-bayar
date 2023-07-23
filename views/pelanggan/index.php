@@ -1,5 +1,5 @@
 <?php $this->extend('template/page'); ?>
-<?php $this->section('tagihan'); ?>
+<?php $this->section('pelanggan'); ?>
 <div class="content">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -27,35 +27,34 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="<?= baseurl('/pembayaran') ?>" method="post">
+          <form id="form1" action="<?= baseurl('/pelanggan_input') ?>" method="post">
             <div class="card-body">
               <div class="form-group">
                 <label for="daya">ID Pelanggan</label>
-                <input type="text" name="ID_pelanggan" class="form-control" placeholder="Masukan ID Pelanggan" required value="" id="ID_pelanggan">
+                <input type="text" id="id_pelanggan" name="id_pelanggan" class="form-control" placeholder="Masukan ID Pelanggan" required value="">
               </div>
               <div class="form-group">
                 <label>No. Meter</label>
-                <input type="text" class="form-control" placeholder="Auto." disabled>
+                <input id="nomor_meter" name="nomor_meter" type="text" class="form-control" placeholder="" disabled>
+                <input type="hidden" name="no_meter">
               </div>
               <div class="form-group">
                 <label>Nama Pelanggan</label>
-                <input type="text" class="form-control" placeholder="Auto." disabled>
+                <input type="text" id="nama_pelanggan" name="nama_pelanggan" class="form-control" placeholder="" disabled>
               </div>
               <div class="form-group">
                 <label>Alamat Pelanggan</label>
-                <textarea class="form-control" rows="3" placeholder="Enter ..." required></textarea>
+                <textarea id="alamat" name="alamat" class="form-control" rows="3" required></textarea>
               </div>
               <div class="form-group">
                 <label>Daya Yang Digunakan</label>
-                <select class="form-control">
-                  <option>450VA</option>
-                  <option>900VA</option>
-                  <option>1300VA</option>
-                  <option>2200VA</option>
-                  <option>5500VA</option>
+                <select id="daya" name="daya" class="form-control" required>
+                  <?php foreach ($datadaya  as $key => $value) : ?>
+                    <option value="<?= $value->id_tarif ?>"><?= $value->daya ?>VA - <?= $value->tarifperkwh ?></option>
+                  <?php endforeach ?>
                 </select>
               </div>
-              <button type="submit" class="btn btn-block btn-outline-primary">Submit</button>
+              <button type="button" onclick="_submit()" class="btn btn-block btn-outline-primary">Submit</button>
               <button type="reset" class="btn btn-block btn-outline-primary">Reset</button>
             </div>
           </form>
@@ -78,36 +77,89 @@
                   <th>No. Meter</th>
                   <th>Nama Pelanggan</th>
                   <th>Alamat Pelanggan</th>
-                  <th>Batas Waktu Bayar</th>
                   <th>Daya</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12345367</td>
-                                        <td>09823563</td>
-                                        <td>Eris</td>
-                                        <td>Jakarta</td>
-                                        <td>20 Juli</td>
-                                        <td>250KVA</td>
-                                        <td><a href="<?= baseurl('/pelanggan') ?>" class="btn btn-sm">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                <!-- Data tabel pelanggan akan diisikan secara dinamis -->
-             
+                <?php $index = 1;
+                foreach ($datatable as $key => $value) : ?>
+                  <tr>
+                    <td><?= $index ?></td>
+                    <td><?= $value->id_pelanggan ?></td>
+                    <td><?= $value->nomor_kwh ?></td>
+                    <td><?= $value->nama_pelanggan ?></td>
+                    <td><?= $value->alamat ?></td>
+                    <td><?= $value->id_tarif ?></td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" onclick="" class="btn btn-sm btn-default"><i class="fas fa-trash"></i></button>
+                      </div>
+                    </td>
+                    <?php $index++ ?>
+                  </tr>
+                <?php endforeach ?>
+              </tbody>
+              <!-- Data tabel pelanggan akan diisikan secara dinamis -->
+
             </table>
           </div>
           <!-- /.card-body -->
-        </div>
-        </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+</div>
+<input type="hidden" id="baseurl" value="<?= baseurl('/get_data_pelanggan') ?>">
+<!-- Toastr -->
+<script src="<?= baseurl() ?>/assets/plugins/toastr/toastr.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#id_pelanggan").on("change", function() {
+      let baseUrl = $('#baseurl').val();
+      nopelanggan = $('#id_pelanggan').val();
+
+      $.ajax({
+        url: baseUrl,
+        type: "POST",
+        data: {
+          nopelanggan: nopelanggan
+        },
+        dataType: "json",
+        success: function(data) {
+
+          if (data.nomorMeter == "" || data.nomorMeter == null) {
+            $('#nomor_meter').val('0');
+            $('#no_meter').val('0');
+          } else {
+            $('#nomor_meter').val(data.nomorMeter);
+            $('#no_meter').val(data.nomorMeter);
+          }
+
+          $('#nama_pelanggan').val(data.namaPelanggan);
+          $('#alamat').val(data.alamat);
+          $('#daya').val(data.daya);
+
+          toastr.info('Data berhasil ditemukan')
+        },
+        error: function(e) {
+          toastr.info('Data tidak ditemukan')
+        }
+      });
+    });
+  });
+
+  function _submit() {
+    if ($('#daya').val() == null || $('#daya').val() == "") {
+      toastr.error('Daya tidak boleh kosong')
+    } else if ($('#id_pelanggan').val() == "" || $('#id_pelanggan').val() == null) {
+      toastr.error('ID Pelanggan tidak boleh kosong')
+    } else {
+      $('#form1').submit();
+    }
+  }
+</script>
+
 <?php $this->endSection(); ?>
