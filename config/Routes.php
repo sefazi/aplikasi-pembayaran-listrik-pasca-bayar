@@ -22,6 +22,7 @@ class Routes
         ['/auth', 'Login:auth'],
         ['/penggunaan', 'penggunaan:index'],
         ['/pelanggan', 'pelanggan:index'],
+        ['/tagihan', 'tagihan:index'],
 
         ['/error', 'ErrorRedirect:init'],
     ];

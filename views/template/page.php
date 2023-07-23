@@ -52,6 +52,26 @@
     <script src="<?= baseurl('/assets') ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- Toastr -->
     <script src="<?= baseurl() ?>/assets/plugins/toastr/toastr.min.js"></script>
+
+    <script>
+  $(function () {
+    $("#pelanggan").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#pelanggan .col-md-6:eq(0)');
+    // $('#pelanggan').DataTable({
+    //   "paging": true,
+    //   "lengthChange": false,
+    //   "searching": false,
+    //   "ordering": true,
+    //   "info": true,
+    //   "autoWidth": false,
+    //   "responsive": true,
+    // });
+  });
+  </script>
+
+  
 </body>
 
 </html>

@@ -1,12 +1,12 @@
 <?php $this->extend('template/page'); ?>
-<?php $this->section('pelanggan'); ?>
+<?php $this->section('tagihan'); ?>
 <div class="content">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Dashboard</h1>
+          <h1 class="m-0">PELANGGAN</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -23,7 +23,7 @@
       <div class="col-sm-4">
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">DATA PELANGGAN</h3>
+            <h3 class="card-title">Input Data Pelanggan</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
@@ -66,23 +66,40 @@
       <div class="col-sm-8">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <h3 class="card-title">Data Pelanggan</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body table-responsive p-0">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="pelanggan" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>No</th>
+                  <th>ID Pelanggan</th>
+                  <th>No. Meter</th>
+                  <th>Nama Pelanggan</th>
+                  <th>Alamat Pelanggan</th>
+                  <th>Batas Waktu Bayar</th>
+                  <th>Daya</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12345367</td>
+                                        <td>09823563</td>
+                                        <td>Eris</td>
+                                        <td>Jakarta</td>
+                                        <td>20 Juli</td>
+                                        <td>250KVA</td>
+                                        <td><a href="<?= baseurl('/pelanggan') ?>" class="btn btn-sm">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
                 <!-- Data tabel pelanggan akan diisikan secara dinamis -->
-              </tbody>
+             
             </table>
           </div>
           <!-- /.card-body -->
