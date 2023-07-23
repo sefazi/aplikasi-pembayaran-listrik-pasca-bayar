@@ -25,6 +25,7 @@ class Routes
                 ['/pelanggan_input', 'pelanggan:input'],
                 ['/tagihan', 'tagihan:index'],
                 ['/invoice', 'invoice:index'],
+                ['/profile', 'profile:index'],
                 ['/get_data_pelanggan', 'Pelanggan:ajax'],
 
                 ['/error', 'ErrorRedirect:init'],
