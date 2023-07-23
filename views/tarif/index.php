@@ -26,15 +26,17 @@
                 <div class="col-sm-4">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Masukan Tarif</h3>
+                            <h3 id="h3-title" class="card-title">Masukan Tarif</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?= baseurl('/tarif') ?>" method="post">
+                        <form id="form_" action="<?= baseurl('/tarif') ?>" method="post">
+                            <input type="hidden" id="type" name="type" value="insert">
+                            <input type="hidden" id="id" name="id" value="">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="daya">Masukkan Daya</label>
-                                    <input type="text" name="daya" class="form-control" placeholder="Masukkan Daya" required value="" list="day">
+                                    <input type="text" id="daya" name="daya" class="form-control" placeholder="Masukkan Daya" required value="" list="day">
                                     <datalist id="day">
                                         <option value="450">450VA</option>
                                         <option value="900">900VA</option>
@@ -44,9 +46,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label>TARIF/KWH</label>
-                                    <input type="text" name="tarif" class="form-control" placeholder="Masukkan Tarif" required value="">
+                                    <input type="text" id="tarifperkwh" name="tarif" class="form-control" placeholder="Masukkan Tarif" required value="">
                                 </div>
-                                <button type="submit" class="btn btn-block btn-outline-primary">Submit</button>
+                                <button id="btn-submit" type="button" onclick="_submit()" class="btn btn-block btn-outline-primary">Submit</button>
                                 <button type="reset" class="btn btn-block btn-outline-primary">Reset</button>
                             </div>
                             <!-- /.card-body -->
@@ -71,30 +73,32 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                        <div class="card-body table-responsive">
+                            <table id="tarif" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Nomor Tarif</th>
                                         <th>Tarif/KwH</th>
-                                        <th>Aksi</th>
+                                        <th width="20">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>123</td>
-                                        <td>10000</td>
-                                        <td><a href="<?= baseurl('/tarif') ?>" class="btn btn-sm">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <?php //foreach($data as $key => $val): 
-                                    ?>
-                                    <?php //endforeach 
-                                    ?>
+                                    <?php $index = 1;
+                                    foreach ($datatable as $key => $value) : ?>
+                                        <tr>
+                                            <td><?= $index ?></td>
+                                            <td><?= $value->daya ?></td>
+                                            <td><?= $value->tarifperkwh ?></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <!-- <button type="button" onclick="" class="btn btn-sm btn-default"><i class="fas fa-trash"></i></button> -->
+                                                    <button type="button" onclick="edit('edit','<?= $value->id_tarif ?>','<?= $value->daya ?>','<?= $value->tarifperkwh ?>');" class="btn btn-sm btn-default"><i class="fas fa-edit"></i></button>
+                                                </div>
+                                            </td>
+                                            <?php $index++ ?>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -107,9 +111,30 @@
     <!-- /.content -->
 </div>
 
+<script>
+    function edit(type, id, daya, tarif) {
+        $('#type').val(type);
+        $('#id').val(id);
+        $('#daya').val(daya);
+        $('#tarifperkwh').val(tarif);
+        $('#btn-submit').html('Edit')
+        $('#h3-title').html('Edit Tarif')
+    }
+
+    function _submit() {
+        $('#form_').submit();
+    }
+</script>
+<!-- Toastr -->
+<script src="<?= baseurl() ?>/assets/plugins/toastr/toastr.min.js"></script>
 <?php if (hasFlashError('daya-has')) : ?>
     <script>
         toastr.info('<?= getFlash('exist'); ?>')
+    </script>
+<?php endif; ?>
+<?php if (hasFlashError('edit-success')) : ?>
+    <script>
+        toastr.info('<?= getFlash('berhasil-edit'); ?>')
     </script>
 <?php endif; ?>
 <?php $this->endSection(); ?>
