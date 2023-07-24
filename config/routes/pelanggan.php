@@ -16,6 +16,20 @@ class Pelanggan extends Views
 
     public function index()
     {
+        // cek login
+        $login = getSession('is-login');
+        if (!$login) {
+            redirecting('/login');
+            die;
+        }
+
+        // cek otoritas
+        $level = getSession('id_level');
+        if ($level > 1) {
+            redirecting('/home');
+            die;
+        }
+
         $datatable = $this->database->GetPelangganAll();
 
         foreach ($datatable as $key => $value) {
@@ -35,6 +49,20 @@ class Pelanggan extends Views
 
     public function input()
     {
+        // cek login
+        $login = getSession('is-login');
+        if (!$login) {
+            redirecting('/login');
+            die;
+        }
+
+        // cek otoritas
+        $level = getSession('id_level');
+        if ($level > 1) {
+            redirecting('/home');
+            die;
+        }
+
         $req = getPost();
         $res = $this->database->InputDataPelanggan($req);
         if ($res > 0) {
@@ -44,6 +72,20 @@ class Pelanggan extends Views
 
     public function ajax()
     {
+        // cek login
+        $login = getSession('is-login');
+        if (!$login) {
+            redirecting('/login');
+            die;
+        }
+
+        // cek otoritas
+        $level = getSession('id_level');
+        if ($level > 1) {
+            redirecting('/home');
+            die;
+        }
+
         header("Content-Type: application/json");
 
         $req = getPost();

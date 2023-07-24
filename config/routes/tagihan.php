@@ -16,6 +16,12 @@ class Tagihan extends Views
 
     public function index()
     {
+        $login = getSession('is-login');
+        if (!$login) {
+            redirecting('/login');
+            die;
+        }
+
         $req = getPost();
         if ($req != null) {
             $res = $this->database->GetTagihanById($req->id_pelanggan);
@@ -35,6 +41,12 @@ class Tagihan extends Views
 
     public function bayar()
     {
+        $login = getSession('is-login');
+        if (!$login) {
+            redirecting('/login');
+            die;
+        }
+
         $req = getPost();
         $res = $this->database->UpdateStatus($req);
         if ($res > 0) {

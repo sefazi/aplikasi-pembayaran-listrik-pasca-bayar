@@ -17,6 +17,20 @@ class Penggunaan extends Views
 
     public function index()
     {
+        // cek login
+        $login = getSession('is-login');
+        if (!$login) {
+            redirecting('/login');
+            die;
+        }
+
+        // cek otoritas
+        $level = getSession('id_level');
+        if ($level > 1) {
+            redirecting('/home');
+            die;
+        }
+
         $content = [
             'render' => 'penggunaan',
             'datatable' => $this->database->getDataPenggunaAll()
@@ -26,6 +40,20 @@ class Penggunaan extends Views
 
     public function inputPenggunaan()
     {
+        // cek login
+        $login = getSession('is-login');
+        if (!$login) {
+            redirecting('/login');
+            die;
+        }
+
+        // cek otoritas
+        $level = getSession('id_level');
+        if ($level > 1) {
+            redirecting('/home');
+            die;
+        }
+
         $req = getPost();
         $data = [
             'id_penggunaan' => "PG" . date('dmHsi'),
